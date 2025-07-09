@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Menu, 
@@ -24,7 +24,6 @@ import {
   Church, 
   Heart,
   Sparkles,
-  Star,
   CheckCircle,
   Clock,
   Target
@@ -32,7 +31,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card } from "@/components/ui/card";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -80,9 +78,9 @@ const AnimatedTestimonials = ({
   const [rotationValues, setRotationValues] = useState<number[]>([]);
   const [isMounted, setIsMounted] = useState(false);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setActive((prev) => (prev + 1) % testimonials.length);
-  };
+  }, [testimonials.length]);
 
   const handlePrev = () => {
     setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
@@ -93,14 +91,14 @@ const AnimatedTestimonials = ({
     const rotations = testimonials.map(() => Math.floor(Math.random() * 21) - 10);
     setRotationValues(rotations);
     setIsMounted(true);
-  }, [testimonials.length]);
+  }, [testimonials]);
 
   useEffect(() => {
     if (autoplay) {
       const interval = setInterval(handleNext, 5000);
       return () => clearInterval(interval);
     }
-  }, [autoplay]);
+  }, [autoplay, handleNext]);
 
   return (
     <div className={`max-w-sm md:max-w-4xl mx-auto px-4 md:px-8 lg:px-12 py-20 ${className}`}>
@@ -401,7 +399,7 @@ function BoutiqueCleaningWebsite() {
                     className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-sm"
                   >
                     <Award className="mr-2 h-4 w-4" />
-                    Arizona's Premier Cleaning Service
+                    Arizona&apos;s Premier Cleaning Service
                   </motion.div>
                   <motion.h1
                     initial={{ opacity: 0, y: 20 }}
@@ -420,7 +418,7 @@ function BoutiqueCleaningWebsite() {
                     transition={{ duration: 0.7, delay: 0.4 }}
                     className="max-w-[600px] text-muted-foreground md:text-xl"
                   >
-                    Delivering exceptional commercial cleaning services to Arizona's most discerning establishments. 
+                    Delivering exceptional commercial cleaning services to Arizona&apos;s most discerning establishments. 
                     Where quality meets reliability.
                   </motion.p>
                 </div>
@@ -554,8 +552,8 @@ function BoutiqueCleaningWebsite() {
                   Elevating Standards in Commercial Cleaning
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed">
-                  For over a decade, Commercial Cleaning Associates has been Arizona's trusted partner for premium 
-                  commercial cleaning. We understand that your business environment reflects your brand, and we're 
+                  For over a decade, Commercial Cleaning Associates has been Arizona&apos;s trusted partner for premium 
+                  commercial cleaning. We understand that your business environment reflects your brand, and we&apos;re 
                   committed to ensuring it always makes the right impression.
                 </p>
                 <p className="text-muted-foreground md:text-xl/relaxed">
@@ -639,7 +637,7 @@ function BoutiqueCleaningWebsite() {
                 {
                   icon: <Clock className="h-10 w-10 text-primary" />,
                   title: "Nightly Janitorial Services",
-                  description: "Comprehensive daily cleaning to maintain your facility's professional appearance and hygiene standards."
+                  description: "Comprehensive daily cleaning to maintain your facility&apos;s professional appearance and hygiene standards."
                 },
                 {
                   icon: <Sparkles className="h-10 w-10 text-primary" />,
@@ -659,7 +657,7 @@ function BoutiqueCleaningWebsite() {
                 {
                   icon: <Target className="h-10 w-10 text-primary" />,
                   title: "Window Cleaning",
-                  description: "Crystal-clear windows inside and out, enhancing your building's appearance and natural light."
+                  description: "Crystal-clear windows inside and out, enhancing your building&apos;s appearance and natural light."
                 },
                 {
                   icon: <CheckCircle className="h-10 w-10 text-primary" />,
@@ -734,7 +732,7 @@ function BoutiqueCleaningWebsite() {
                 {
                   icon: <Car className="h-10 w-10 text-primary" />,
                   title: "Auto Dealerships",
-                  description: "Showroom-quality cleaning that maintains your vehicles' and facility's premium appearance."
+                  description: "Showroom-quality cleaning that maintains your vehicles&apos; and facility&apos;s premium appearance."
                 },
                 {
                   icon: <Building className="h-10 w-10 text-primary" />,
@@ -802,7 +800,7 @@ function BoutiqueCleaningWebsite() {
                   transition={{ duration: 0.5, delay: 0.3 }}
                   className="mx-auto max-w-[900px] text-muted-foreground md:text-xl/relaxed"
                 >
-                  Don't just take our word for it - hear from Arizona's premier establishments
+                  Don&apos;t just take our word for it - hear from Arizona&apos;s premier establishments
                 </motion.p>
               </div>
             </div>
@@ -831,7 +829,7 @@ function BoutiqueCleaningWebsite() {
               </h2>
               <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
                 Ready to experience the Commercial Cleaning Associates difference? Contact us today for a customized 
-                proposal tailored to your facility's unique needs.
+                                    proposal tailored to your facility&apos;s unique needs.
               </p>
               <div className="mt-8 space-y-4">
                 <motion.div whileHover={{ x: 5 }} className="flex items-start gap-3">
@@ -873,7 +871,7 @@ function BoutiqueCleaningWebsite() {
             >
               <h3 className="text-xl font-bold">Request Proposal</h3>
               <p className="text-sm text-muted-foreground mb-6">
-                Fill out the form below and we'll provide a customized quote within 24 hours.
+                                    Fill out the form below and we&apos;ll provide a customized quote within 24 hours.
               </p>
               <form className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -959,7 +957,7 @@ function BoutiqueCleaningWebsite() {
               </motion.div>
             </div>
             <p className="text-sm text-muted-foreground">
-              Arizona's premier commercial cleaning service, delivering exceptional results for clients who expect more.
+              Arizona&apos;s premier commercial cleaning service, delivering exceptional results for clients who expect more.
             </p>
             <div className="flex space-x-3">
               {[
