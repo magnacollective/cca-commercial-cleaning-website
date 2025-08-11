@@ -16,7 +16,6 @@ import {
   Building, 
   Sparkles,
   CheckCircle,
-  Clock,
   Factory,
   Play,
   Zap,
