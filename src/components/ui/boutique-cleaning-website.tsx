@@ -19,15 +19,12 @@ import {
   Award, 
   Building, 
   Utensils, 
-  GraduationCap, 
   Car, 
-  Church, 
   Heart,
   Sparkles,
   CheckCircle,
   Clock,
   Factory,
-  Wrench,
   Briefcase
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
