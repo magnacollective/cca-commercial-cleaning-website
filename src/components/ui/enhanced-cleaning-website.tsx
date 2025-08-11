@@ -772,56 +772,6 @@ function EnhancedCleaningWebsite() {
           </div>
         </section>
 
-        {/* Enhanced CTA Section */}
-        <section className="w-full py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
-          <div className="container px-4 md:px-6 text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-6"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold">
-                Ready to Transform Your Facility?
-              </h2>
-              <p className="max-w-2xl mx-auto text-lg">
-                Get your free estimate today and discover why Arizona&apos;s leading businesses trust CCA
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                <Button size="lg" className="rounded-full bg-white text-primary hover:bg-white/90" asChild>
-                  <a href="#contact">
-                    Get Free Estimate
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </a>
-                </Button>
-                <Button size="lg" variant="outline" className="rounded-full border-white text-white hover:bg-white hover:text-primary" asChild>
-                  <a href="tel:+14805550123">
-                    <Phone className="mr-2 w-5 h-5" />
-                    (480) 555-0123
-                  </a>
-                </Button>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                {[
-                  { icon: <CheckCircle className="w-8 h-8" />, text: "Free Test Clean" },
-                  { icon: <Clock className="w-8 h-8" />, text: "24/7 Emergency Service" },
-                  { icon: <Award className="w-8 h-8" />, text: "100% Satisfaction Guarantee" }
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-center justify-center gap-3"
-                  >
-                    {item.icon}
-                    <span className="text-lg font-medium">{item.text}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
       </main>
 
       {/* Enhanced Footer */}
