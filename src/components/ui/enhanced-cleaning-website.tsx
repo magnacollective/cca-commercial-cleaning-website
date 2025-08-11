@@ -7,7 +7,6 @@ import {
   X, 
   ArrowRight, 
   ChevronRight,
-  ChevronLeft,
   ChevronDown,
   Mail, 
   MapPin, 
@@ -56,87 +55,6 @@ const AnimatedCounter = ({ end, duration = 2, suffix = "" }: { end: number; dura
   );
 };
 
-// Before/After Slider Component
-const BeforeAfterSlider = ({ beforeImage, afterImage, beforeLabel = "Before", afterLabel = "After" }: {
-  beforeImage: string;
-  afterImage: string;
-  beforeLabel?: string;
-  afterLabel?: string;
-}) => {
-  const [sliderPosition, setSliderPosition] = useState(50);
-  const [isDragging, setIsDragging] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const handleMove = useCallback((clientX: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const percentage = (x / rect.width) * 100;
-    setSliderPosition(Math.min(Math.max(percentage, 0), 100));
-  }, []);
-
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    if (!isDragging) return;
-    handleMove(e.clientX);
-  }, [isDragging, handleMove]);
-
-  const handleTouchMove = useCallback((e: TouchEvent) => {
-    if (!isDragging) return;
-    handleMove(e.touches[0].clientX);
-  }, [isDragging, handleMove]);
-
-  useEffect(() => {
-    if (isDragging) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', () => setIsDragging(false));
-      document.addEventListener('touchmove', handleTouchMove);
-      document.addEventListener('touchend', () => setIsDragging(false));
-      return () => {
-        document.removeEventListener('mousemove', handleMouseMove);
-        document.removeEventListener('mouseup', () => setIsDragging(false));
-        document.removeEventListener('touchmove', handleTouchMove);
-        document.removeEventListener('touchend', () => setIsDragging(false));
-      };
-    }
-  }, [isDragging, handleMouseMove, handleTouchMove]);
-
-  return (
-    <div 
-      ref={containerRef}
-      className="relative w-full h-[350px] md:h-[400px] overflow-hidden rounded-3xl cursor-ew-resize select-none"
-      onMouseDown={() => setIsDragging(true)}
-      onTouchStart={() => setIsDragging(true)}
-    >
-      <img src={beforeImage} alt={beforeLabel} className="absolute inset-0 w-full h-full object-cover" />
-      <div 
-        className="absolute inset-0 overflow-hidden"
-        style={{ width: `${sliderPosition}%` }}
-      >
-        <img 
-          src={afterImage} 
-          alt={afterLabel} 
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ width: `${containerRef.current?.offsetWidth}px` }}
-        />
-      </div>
-      <div 
-        className="absolute top-0 bottom-0 w-1 bg-white shadow-2xl"
-        style={{ left: `${sliderPosition}%` }}
-      >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center">
-          <ChevronLeft className="w-4 h-4 absolute -left-0.5" />
-          <ChevronRight className="w-4 h-4 absolute -right-0.5" />
-        </div>
-      </div>
-      <div className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-medium">
-        {beforeLabel}
-      </div>
-      <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-medium">
-        {afterLabel}
-      </div>
-    </div>
-  );
-};
 
 // FAQ Accordion Component
 const FAQAccordion = ({ items }: { items: Array<{ question: string; answer: string }> }) => {
@@ -638,12 +556,28 @@ function EnhancedCleaningWebsite() {
               </p>
             </motion.div>
 
-            <BeforeAfterSlider
-              beforeImage="/cleaningimage2.jpeg"
-              afterImage="/cleaningimage1.jpg"
-              beforeLabel="Before Cleaning"
-              afterLabel="After CCA Service"
-            />
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="relative rounded-3xl overflow-hidden">
+                <img
+                  src="/cleaningimage2.jpeg"
+                  alt="Before cleaning service"
+                  className="w-full h-[350px] md:h-[400px] object-cover"
+                />
+                <div className="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold">
+                  Before
+                </div>
+              </div>
+              <div className="relative rounded-3xl overflow-hidden">
+                <img
+                  src="/cleaningimage1.jpg"
+                  alt="After CCA cleaning service"
+                  className="w-full h-[350px] md:h-[400px] object-cover"
+                />
+                <div className="absolute top-4 left-4 bg-green-500 text-white px-4 py-2 rounded-full font-semibold">
+                  After
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -709,7 +643,7 @@ function EnhancedCleaningWebsite() {
               <h2 className="text-3xl md:text-4xl font-bold">
                 Ready to Transform Your Facility?
               </h2>
-              <p className="max-w-2xl mx-auto text-lg opacity-90">
+              <p className="max-w-2xl mx-auto text-lg">
                 Get your free estimate today and discover why Arizona&apos;s leading businesses trust CCA
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
