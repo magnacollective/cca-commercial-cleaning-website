@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform, useInView, useAnimation } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion";
 import { 
   Menu, 
   X, 
@@ -14,36 +14,19 @@ import {
   Phone, 
   MessageCircle,
   Shield, 
-  Users, 
   Award, 
   Building, 
-  Utensils, 
-  Car, 
-  Heart,
   Sparkles,
   CheckCircle,
   Clock,
   Factory,
-  Briefcase,
-  Star,
   Play,
-  Pause,
-  Volume2,
-  VolumeX,
-  Plus,
-  Minus,
   Zap,
-  TrendingUp,
-  Calendar,
   FileCheck,
-  Droplets,
   Sun,
   Moon
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Card } from "@/components/ui/card";
 
 // Animated Counter Component
 const AnimatedCounter = ({ end, duration = 2, suffix = "" }: { end: number; duration?: number; suffix?: string }) => {
@@ -522,7 +505,7 @@ function EnhancedCleaningWebsite() {
                   className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-4 py-2 text-white"
                 >
                   <Zap className="w-4 h-4" />
-                  <span className="text-sm font-medium">Arizona's #1 Commercial Cleaning Service</span>
+                  <span className="text-sm font-medium">Arizona&apos;s #1 Commercial Cleaning Service</span>
                 </motion.div>
 
                 <motion.h1
@@ -733,7 +716,7 @@ function EnhancedCleaningWebsite() {
                 Ready to Transform Your Facility?
               </h2>
               <p className="max-w-2xl mx-auto text-xl opacity-90">
-                Get your free estimate today and discover why Arizona's leading businesses trust CCA
+                Get your free estimate today and discover why Arizona&apos;s leading businesses trust CCA
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                 <Button size="lg" className="rounded-full bg-white text-primary hover:bg-white/90">
@@ -783,7 +766,7 @@ function EnhancedCleaningWebsite() {
                 </div>
               </div>
               <p className="text-sm text-muted-foreground">
-                Arizona's premier commercial cleaning service, delivering exceptional results since 2009.
+                Arizona&apos;s premier commercial cleaning service, delivering exceptional results since 2009.
               </p>
             </div>
 
