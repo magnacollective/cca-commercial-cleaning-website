@@ -103,7 +103,7 @@ const BeforeAfterSlider = ({ beforeImage, afterImage, beforeLabel = "Before", af
   return (
     <div 
       ref={containerRef}
-      className="relative w-full h-[400px] md:h-[500px] overflow-hidden rounded-3xl cursor-ew-resize select-none"
+      className="relative w-full h-[350px] md:h-[400px] overflow-hidden rounded-3xl cursor-ew-resize select-none"
       onMouseDown={() => setIsDragging(true)}
       onTouchStart={() => setIsDragging(true)}
     >
@@ -425,18 +425,16 @@ function EnhancedCleaningWebsite() {
           scrollY > 50 ? "bg-background/95 shadow-lg" : "bg-background/60"
         }`}
       >
-        <div className="container flex h-20 items-center justify-between">
+        <div className="container flex h-16 items-center justify-between">
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex items-center gap-3"
           >
-            <div className="h-14 w-14 bg-gradient-to-br from-primary to-primary/80 rounded-2xl flex items-center justify-center">
-              <Sparkles className="w-8 h-8 text-white" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold">CCA</h1>
-              <p className="text-xs text-muted-foreground">Commercial Cleaning</p>
-            </div>
+            <img
+              src="/cca-logo.png"
+              alt="CCA Commercial Cleaning Associates"
+              className="h-12 w-auto object-contain"
+            />
           </motion.div>
 
           <nav className="hidden md:flex gap-8">
@@ -473,21 +471,17 @@ function EnhancedCleaningWebsite() {
 
       <main className="flex-1">
         {/* Enhanced Hero Section with Parallax */}
-        <section className="relative w-full h-screen overflow-hidden">
+        <section className="relative w-full h-[85vh] overflow-hidden">
           <motion.div
             style={{ opacity: heroOpacity, scale: heroScale }}
             className="absolute inset-0"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-background z-10" />
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
+            <img
+              src="/cleaningimage1.jpg"
+              alt="Professional commercial cleaning service"
               className="absolute inset-0 w-full h-full object-cover"
-            >
-              <source src="https://assets.mixkit.co/videos/preview/mixkit-person-cleaning-a-window-43377-large.mp4" type="video/mp4" />
-            </video>
+            />
           </motion.div>
 
           <div className="relative z-20 h-full flex items-center justify-center">
@@ -560,7 +554,7 @@ function EnhancedCleaningWebsite() {
         </section>
 
         {/* Stats Section */}
-        <section className="w-full py-20 bg-gradient-to-br from-primary/5 to-primary/10">
+        <section className="w-full py-12 bg-gradient-to-br from-primary/5 to-primary/10">
           <div className="container px-4 md:px-6">
             <motion.div
               initial="hidden"
@@ -592,12 +586,12 @@ function EnhancedCleaningWebsite() {
         </section>
 
         {/* Enhanced Services Section */}
-        <section id="services" className="w-full py-24">
+        <section id="services" className="w-full py-16">
           <div className="container px-4 md:px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="text-center mb-16"
+              className="text-center mb-12"
             >
               <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
                 Our Services
@@ -626,12 +620,12 @@ function EnhancedCleaningWebsite() {
         </section>
 
         {/* Before/After Section */}
-        <section className="w-full py-24 bg-muted/20">
+        <section className="w-full py-16 bg-muted/20">
           <div className="container px-4 md:px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="text-center mb-16"
+              className="text-center mb-12"
             >
               <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
                 See The Difference
@@ -645,21 +639,21 @@ function EnhancedCleaningWebsite() {
             </motion.div>
 
             <BeforeAfterSlider
-              beforeImage="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800"
-              afterImage="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800"
-              beforeLabel="Before Restoration"
-              afterLabel="After Restoration"
+              beforeImage="/cleaningimage2.jpeg"
+              afterImage="/cleaningimage1.jpg"
+              beforeLabel="Before Cleaning"
+              afterLabel="After CCA Service"
             />
           </div>
         </section>
 
         {/* Process Timeline */}
-        <section id="process" className="w-full py-24">
+        <section id="process" className="w-full py-16">
           <div className="container px-4 md:px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="text-center mb-16"
+              className="text-center mb-12"
             >
               <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
                 Our Process
@@ -679,12 +673,12 @@ function EnhancedCleaningWebsite() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="w-full py-24 bg-muted/20">
+        <section id="faq" className="w-full py-16 bg-muted/20">
           <div className="container px-4 md:px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="text-center mb-16"
+              className="text-center mb-12"
             >
               <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
                 FAQ
@@ -704,7 +698,7 @@ function EnhancedCleaningWebsite() {
         </section>
 
         {/* Enhanced CTA Section */}
-        <section className="w-full py-24 bg-gradient-to-r from-primary to-primary/80 text-white">
+        <section className="w-full py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
           <div className="container px-4 md:px-6 text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -712,10 +706,10 @@ function EnhancedCleaningWebsite() {
               transition={{ duration: 0.5 }}
               className="space-y-6"
             >
-              <h2 className="text-4xl md:text-5xl font-bold">
+              <h2 className="text-3xl md:text-4xl font-bold">
                 Ready to Transform Your Facility?
               </h2>
-              <p className="max-w-2xl mx-auto text-xl opacity-90">
+              <p className="max-w-2xl mx-auto text-lg opacity-90">
                 Get your free estimate today and discover why Arizona&apos;s leading businesses trust CCA
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -757,13 +751,11 @@ function EnhancedCleaningWebsite() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="h-12 w-12 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center">
-                  <Sparkles className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-bold">CCA</h3>
-                  <p className="text-xs text-muted-foreground">Commercial Cleaning</p>
-                </div>
+                <img
+                  src="/cca-logo.png"
+                  alt="CCA Commercial Cleaning Associates"
+                  className="h-10 w-auto object-contain"
+                />
               </div>
               <p className="text-sm text-muted-foreground">
                 Arizona&apos;s premier commercial cleaning service, delivering exceptional results since 2009.
@@ -809,7 +801,7 @@ function EnhancedCleaningWebsite() {
             </div>
           </div>
 
-          <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
+          <div className="mt-6 pt-6 border-t text-center text-sm text-muted-foreground">
             <p>&copy; {new Date().getFullYear()} Commercial Cleaning Associates. All rights reserved.</p>
           </div>
         </div>
