@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion";
 import { 
   Menu, 
   X, 
   ArrowRight, 
-  ChevronRight,
   ChevronDown,
   Mail, 
   MapPin, 
@@ -322,16 +321,17 @@ function EnhancedCleaningWebsite() {
         transition={{ delay: 1, type: "spring" }}
         className="fixed bottom-8 right-8 z-50"
       >
-        <motion.button
+        <motion.a
+          href="#contact"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="group relative bg-gradient-to-r from-primary to-primary/80 text-white p-4 rounded-full shadow-2xl"
+          className="group relative bg-gradient-to-r from-primary to-primary/80 text-white p-4 rounded-full shadow-2xl inline-block"
         >
           <MessageCircle className="w-6 h-6" />
           <span className="absolute -top-12 right-0 bg-black text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
             Get Free Estimate
           </span>
-        </motion.button>
+        </motion.a>
       </motion.div>
 
       {/* Enhanced Header */}
@@ -356,13 +356,19 @@ function EnhancedCleaningWebsite() {
           </motion.div>
 
           <nav className="hidden md:flex gap-8">
-            {["Services", "Process", "Industries", "About", "FAQ", "Contact"].map((item) => (
+            {[
+              { name: "Services", href: "#services" },
+              { name: "Process", href: "#process" },
+              { name: "About", href: "#about" },
+              { name: "FAQ", href: "#faq" },
+              { name: "Contact", href: "#contact" }
+            ].map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.name}
+                href={item.href}
                 className="relative text-sm font-medium transition-colors hover:text-primary group"
               >
-                {item}
+                {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
               </a>
             ))}
@@ -377,8 +383,10 @@ function EnhancedCleaningWebsite() {
             >
               {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </motion.button>
-            <Button className="hidden md:flex rounded-full bg-gradient-to-r from-primary to-primary/80">
-              Get Free Quote
+            <Button className="hidden md:flex rounded-full bg-gradient-to-r from-primary to-primary/80" asChild>
+              <a href="#contact">
+                Get Free Quote
+              </a>
             </Button>
             <button className="flex md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -424,7 +432,10 @@ function EnhancedCleaningWebsite() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="text-5xl md:text-7xl font-bold text-white"
+                  className="text-5xl md:text-7xl font-bold text-white drop-shadow-2xl"
+                  style={{
+                    textShadow: '0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.3), 0 0 60px rgba(255,255,255,0.2)'
+                  }}
                 >
                   Restoring Excellence,
                   <br />
@@ -437,7 +448,10 @@ function EnhancedCleaningWebsite() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7, duration: 0.8 }}
-                  className="max-w-2xl mx-auto text-xl text-white/90"
+                  className="max-w-2xl mx-auto text-xl text-white drop-shadow-lg"
+                  style={{
+                    textShadow: '0 0 10px rgba(255,255,255,0.3)'
+                  }}
                 >
                   From ceiling restoration to industrial facility cleaning, we deliver exceptional results
                   that exceed expectations
@@ -449,13 +463,17 @@ function EnhancedCleaningWebsite() {
                   transition={{ delay: 0.9, duration: 0.8 }}
                   className="flex flex-col sm:flex-row gap-4 justify-center"
                 >
-                  <Button size="lg" className="rounded-full bg-white text-black hover:bg-white/90 group">
-                    Get Free Estimate
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <Button size="lg" className="rounded-full bg-white text-black hover:bg-white/90 group" asChild>
+                    <a href="#contact">
+                      Get Free Estimate
+                      <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </a>
                   </Button>
-                  <Button size="lg" variant="outline" className="rounded-full border-white text-white hover:bg-white hover:text-black">
-                    Watch Our Process
-                    <Play className="ml-2 w-5 h-5" />
+                  <Button size="lg" variant="outline" className="rounded-full border-white text-white hover:bg-white hover:text-black" asChild>
+                    <a href="#process">
+                      View Our Process
+                      <Play className="ml-2 w-5 h-5" />
+                    </a>
                   </Button>
                 </motion.div>
               </motion.div>
@@ -606,6 +624,63 @@ function EnhancedCleaningWebsite() {
           </div>
         </section>
 
+        {/* About Section */}
+        <section id="about" className="w-full py-16">
+          <div className="container px-4 md:px-6">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                  About CCA
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  Arizona&apos;s Premier Commercial Cleaning Service
+                </h2>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Our experienced staff is always available to help you with any questions, concerns or emergencies. 
+                  We understand that your business environment reflects your brand, and we&apos;re committed to restoring 
+                  your facilities to like-new condition.
+                </p>
+                <p className="text-lg text-muted-foreground mb-8">
+                  Our team of skilled professionals uses a variety of lifts and specialized tools to meet job requirements 
+                  and exceed client expectations. From complete ceiling restoration to industrial facility cleaning, we offer 
+                  free estimates, test cleans, and customized proposals tailored to your facility&apos;s unique needs.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button size="lg" className="rounded-full" asChild>
+                    <a href="#contact">
+                      Get Free Estimate
+                    </a>
+                  </Button>
+                  <Button size="lg" variant="outline" className="rounded-full" asChild>
+                    <a href="tel:+14805550123">
+                      Call (480) 555-0123
+                    </a>
+                  </Button>
+                </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="relative"
+              >
+                <div className="relative rounded-3xl overflow-hidden">
+                  <img
+                    src="/cleaningimage1.jpg"
+                    alt="Professional commercial cleaning team"
+                    className="w-full h-[400px] object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
         <section id="faq" className="w-full py-16 bg-muted/20">
           <div className="container px-4 md:px-6">
@@ -631,6 +706,72 @@ function EnhancedCleaningWebsite() {
           </div>
         </section>
 
+        {/* Contact Section */}
+        <section id="contact" className="w-full py-16 bg-background">
+          <div className="container px-4 md:px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="text-center mb-12"
+            >
+              <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                Contact Us
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Get Your Free Estimate Today
+              </h2>
+              <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
+                Ready to experience the CCA difference? Contact us for a personalized proposal.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-center p-6 rounded-2xl border bg-card"
+              >
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Phone className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-semibold mb-2">Call Us</h3>
+                <a href="tel:+14805550123" className="text-primary hover:underline">
+                  (480) 555-0123
+                </a>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-center p-6 rounded-2xl border bg-card"
+              >
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Mail className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-semibold mb-2">Email Us</h3>
+                <a href="mailto:info@ccacleaning.com" className="text-primary hover:underline">
+                  info@ccacleaning.com
+                </a>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-center p-6 rounded-2xl border bg-card"
+              >
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MapPin className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-semibold mb-2">Service Area</h3>
+                <p className="text-muted-foreground">Phoenix & Surrounding Areas</p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* Enhanced CTA Section */}
         <section className="w-full py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
           <div className="container px-4 md:px-6 text-center">
@@ -647,13 +788,17 @@ function EnhancedCleaningWebsite() {
                 Get your free estimate today and discover why Arizona&apos;s leading businesses trust CCA
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                <Button size="lg" className="rounded-full bg-white text-primary hover:bg-white/90">
-                  Get Free Estimate
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                <Button size="lg" className="rounded-full bg-white text-primary hover:bg-white/90" asChild>
+                  <a href="#contact">
+                    Get Free Estimate
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </a>
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-full border-white text-white hover:bg-white hover:text-primary">
-                  <Phone className="mr-2 w-5 h-5" />
-                  (480) 555-0123
+                <Button size="lg" variant="outline" className="rounded-full border-white text-white hover:bg-white hover:text-primary" asChild>
+                  <a href="tel:+14805550123">
+                    <Phone className="mr-2 w-5 h-5" />
+                    (480) 555-0123
+                  </a>
                 </Button>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
