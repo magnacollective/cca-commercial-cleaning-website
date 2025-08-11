@@ -26,7 +26,9 @@ import {
   Sparkles,
   CheckCircle,
   Clock,
-  Target
+  Factory,
+  Wrench,
+  Briefcase
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -552,14 +554,14 @@ function BoutiqueCleaningWebsite() {
                   Elevating Standards in Commercial Cleaning
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed">
-                  For over a decade, Commercial Cleaning Associates has been Arizona&apos;s trusted partner for premium 
-                  commercial cleaning. We understand that your business environment reflects your brand, and we&apos;re 
-                  committed to ensuring it always makes the right impression.
+                  Our experienced staff is always available to help you with any questions, concerns or emergencies. 
+                  We understand that your business environment reflects your brand, and we&apos;re committed to restoring 
+                  your facilities to like-new condition.
                 </p>
                 <p className="text-muted-foreground md:text-xl/relaxed">
-                  Our team of trained professionals uses state-of-the-art equipment and eco-friendly products to 
-                  deliver results that exceed expectations. From nightly janitorial services to specialized deep 
-                  cleaning, we tailor our approach to meet the unique needs of each client.
+                  Our team of skilled professionals uses a variety of lifts and specialized tools to meet job requirements 
+                  and exceed client expectations. From complete ceiling restoration to industrial facility cleaning, we offer 
+                  free estimates, test cleans, and customized proposals tailored to your facility&apos;s unique needs.
                 </p>
                 <div className="flex flex-col gap-2 sm:flex-row">
                   <Button size="lg" className="rounded-full">
@@ -613,7 +615,7 @@ function BoutiqueCleaningWebsite() {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
                 >
-                  Comprehensive Cleaning Solutions
+                  Complete Commercial Cleaning Solutions
                 </motion.h2>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
@@ -621,8 +623,8 @@ function BoutiqueCleaningWebsite() {
                   transition={{ duration: 0.5, delay: 0.3 }}
                   className="mx-auto max-w-[900px] text-muted-foreground md:text-xl/relaxed"
                 >
-                  From routine maintenance to specialized cleaning, we offer a full range of services 
-                  tailored to your business needs
+                  From ceiling restoration to industrial facility cleaning, our skilled professionals use specialized 
+                  lifts and tools to exceed client expectations
                 </motion.p>
               </div>
             </div>
@@ -635,34 +637,34 @@ function BoutiqueCleaningWebsite() {
             >
               {[
                 {
+                  icon: <Building className="h-10 w-10 text-primary" />,
+                  title: "Complete Ceiling/Wall Restoration",
+                  description: "Acoustic, Vinyl, Cloth Covered, Open Beam, Metal, Concrete, Sheetrock, and FRP surface restoration to original white shine."
+                },
+                {
+                  icon: <Shield className="h-10 w-10 text-primary" />,
+                  title: "Kitchen Compliance Services",
+                  description: "USDA code standard compliance, AZ Fire Code restoration, stainless steel and wall restoration to like-new condition."
+                },
+                {
+                  icon: <Sparkles className="h-10 w-10 text-primary" />,
+                  title: "High Dusting Services",
+                  description: "Light fixtures, vent caps, rafters, structural steel beams, windowsills and frames - removing dust buildup for extended periods."
+                },
+                {
+                  icon: <Building className="h-10 w-10 text-primary" />,
+                  title: "Industrial Facilities Cleaning",
+                  description: "Manufacturing plants and factory cleaning, comprehensive interior and exterior industrial facility maintenance."
+                },
+                {
                   icon: <Clock className="h-10 w-10 text-primary" />,
                   title: "Nightly Janitorial Services",
                   description: "Comprehensive daily cleaning to maintain your facility&apos;s professional appearance and hygiene standards."
                 },
                 {
-                  icon: <Sparkles className="h-10 w-10 text-primary" />,
-                  title: "Deep Cleaning Services",
-                  description: "Intensive cleaning for carpets, upholstery, and hard-to-reach areas to restore your space to pristine condition."
-                },
-                {
-                  icon: <Shield className="h-10 w-10 text-primary" />,
-                  title: "Sanitization & Disinfection",
-                  description: "Advanced sanitization protocols using hospital-grade disinfectants to ensure a safe, healthy environment."
-                },
-                {
-                  icon: <Building className="h-10 w-10 text-primary" />,
-                  title: "Floor Care & Maintenance",
-                  description: "Professional floor cleaning, waxing, and maintenance for all surface types including hardwood, tile, and carpet."
-                },
-                {
-                  icon: <Target className="h-10 w-10 text-primary" />,
-                  title: "Window Cleaning",
-                  description: "Crystal-clear windows inside and out, enhancing your building&apos;s appearance and natural light."
-                },
-                {
                   icon: <CheckCircle className="h-10 w-10 text-primary" />,
-                  title: "Specialty Services",
-                  description: "Customized cleaning solutions for unique requirements including post-construction cleanup and event preparation."
+                  title: "Specialized Deep Cleaning",
+                  description: "Intensive cleaning for carpets, upholstery, and hard-to-reach areas using specialized lifts and tools."
                 }
               ].map((service, index) => (
                 <motion.div
@@ -676,6 +678,66 @@ function BoutiqueCleaningWebsite() {
                     <h3 className="text-xl font-bold">{service.title}</h3>
                     <p className="text-muted-foreground">{service.description}</p>
                   </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </section>
+
+        {/* Benefits Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/20">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            className="container px-4 md:px-6"
+          >
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="inline-block rounded-full bg-muted px-3 py-1 text-sm"
+                >
+                  Why Choose CCA
+                </motion.div>
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
+                >
+                  Proven Benefits for Your Business
+                </motion.h2>
+              </div>
+            </div>
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="mx-auto grid max-w-6xl items-center gap-4 py-12 md:grid-cols-2 lg:grid-cols-4"
+            >
+              {[
+                "Prolongs the life of your ceiling",
+                "Affordable competitive pricing",
+                "Makes positive impression on customers",
+                "Provides long-term cost savings",
+                "Promotes healthy work environment",
+                "Increases employee productivity",
+                "Enhances business reputation",
+                "Improves lighting to brighter, natural look"
+              ].map((benefit, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemFadeIn}
+                  whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                  className="flex items-center gap-3 rounded-full bg-background px-4 py-3 shadow-sm"
+                >
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                  <span className="text-sm font-medium">{benefit}</span>
                 </motion.div>
               ))}
             </motion.div>
@@ -720,9 +782,14 @@ function BoutiqueCleaningWebsite() {
             >
               {[
                 {
+                  icon: <Factory className="h-10 w-10 text-primary" />,
+                  title: "Industrial & Manufacturing",
+                  description: "Complete interior and exterior cleaning for manufacturing plants and industrial facilities."
+                },
+                {
                   icon: <Utensils className="h-10 w-10 text-primary" />,
                   title: "Restaurants & Food Service",
-                  description: "Health department compliant cleaning with specialized kitchen and dining area expertise."
+                  description: "USDA code compliant cleaning with specialized kitchen and dining area expertise."
                 },
                 {
                   icon: <Heart className="h-10 w-10 text-primary" />,
@@ -740,14 +807,9 @@ function BoutiqueCleaningWebsite() {
                   description: "Luxury-level cleaning services that enhance guest experiences and maintain brand standards."
                 },
                 {
-                  icon: <Church className="h-10 w-10 text-primary" />,
-                  title: "Religious Institutions",
-                  description: "Respectful, thorough cleaning services that honor the sacred nature of your space."
-                },
-                {
-                  icon: <GraduationCap className="h-10 w-10 text-primary" />,
-                  title: "Schools & Educational",
-                  description: "Safe, healthy learning environments with child-friendly cleaning products and protocols."
+                  icon: <Briefcase className="h-10 w-10 text-primary" />,
+                  title: "Commercial Offices",
+                  description: "Professional cleaning services that create productive, healthy work environments."
                 }
               ].map((industry, index) => (
                 <motion.div
@@ -979,19 +1041,19 @@ function BoutiqueCleaningWebsite() {
             <h3 className="text-lg font-medium mb-4">Services</h3>
             <nav className="flex flex-col space-y-2 text-sm">
               <a href="#" className="text-muted-foreground hover:text-foreground">
-                Nightly Janitorial
+                Ceiling/Wall Restoration
               </a>
               <a href="#" className="text-muted-foreground hover:text-foreground">
-                Deep Cleaning
+                Kitchen Compliance
               </a>
               <a href="#" className="text-muted-foreground hover:text-foreground">
-                Sanitization
+                High Dusting Services
               </a>
               <a href="#" className="text-muted-foreground hover:text-foreground">
-                Floor Care
+                Industrial Cleaning
               </a>
               <a href="#" className="text-muted-foreground hover:text-foreground">
-                Window Cleaning
+                Janitorial Services
               </a>
             </nav>
           </div>
@@ -999,7 +1061,10 @@ function BoutiqueCleaningWebsite() {
             <h3 className="text-lg font-medium mb-4">Industries</h3>
             <nav className="flex flex-col space-y-2 text-sm">
               <a href="#" className="text-muted-foreground hover:text-foreground">
-                Restaurants
+                Industrial & Manufacturing
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-foreground">
+                Restaurants & Food Service
               </a>
               <a href="#" className="text-muted-foreground hover:text-foreground">
                 Medical Facilities
@@ -1008,10 +1073,7 @@ function BoutiqueCleaningWebsite() {
                 Auto Dealerships
               </a>
               <a href="#" className="text-muted-foreground hover:text-foreground">
-                Resorts
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground">
-                Schools
+                Commercial Offices
               </a>
             </nav>
           </div>
